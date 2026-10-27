@@ -1,0 +1,126 @@
+# Reusable build: macOS (.dmg) and Windows (.zip) release artifacts.
+# Called by ci.yml (every push) and release.yml (tags).
+#
+# macOS signing and notarization run only when these repository secrets exist:
+#   MACOS_CERTIFICATE           base64 of a "Developer ID Application" .p12
+#   MACOS_CERTIFICATE_PASSWORD  password of that .p12
+#   MACOS_SIGNING_IDENTITY      e.g. "Developer ID Application: Wanmind Innovation (TEAMID)"
+#   APPLE_ID, APPLE_TEAM_ID, APPLE_APP_PASSWORD   for notarytool
+# Without them the app is ad-hoc signed (users must right-click > Open once).
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        description: Marketing version, e.g. 1.2.0
+        type: string
+        default: 0.0.0
+
+env:
+  FLUTTER_VERSION: 3.35.6
+
+jobs:
+  macos:
+    runs-on: macos-15
+    env:
+      HAS_SIGNING: ${{ secrets.MACOS_CERTIFICATE != '' }}
+      HAS_NOTARY: ${{ secrets.APPLE_APP_PASSWORD != '' }}
+      DMG: PadPilot-${{ inputs.version }}-macos.dmg
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - name: Build
+        run: |
+          flutter pub get
+          flutter build macos --release \
+            --build-name "${{ inputs.version }}" \
+            --build-number "${{ github.run_number }}"
+
+      - name: Import signing certificate
+        if: env.HAS_SIGNING == 'true'
+        env:
+          CERT: ${{ secrets.MACOS_CERTIFICATE }}
+          CERT_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
+        run: |
+          KEYCHAIN="$RUNNER_TEMP/build.keychain-db"
+          KEYCHAIN_PASSWORD="$(uuidgen)"
+          echo "$CERT" | base64 --decode > "$RUNNER_TEMP/cert.p12"
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+          security import "$RUNNER_TEMP/cert.p12" -P "$CERT_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN"
+          security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+          security list-keychains -d user -s "$KEYCHAIN" $(security list-keychains -d user | tr -d '"')
+
+      - name: Sign app (Developer ID, hardened runtime)
+        if: env.HAS_SIGNING == 'true'
+        env:
+          IDENTITY: ${{ secrets.MACOS_SIGNING_IDENTITY }}
+        run: |
+          APP="build/macos/Build/Products/Release/PadPilot.app"
+          codesign --force --deep --timestamp --options runtime \
+            --entitlements macos/Runner/Release.entitlements \
+            --sign "$IDENTITY" "$APP"
+          codesign --verify --deep --strict --verbose=2 "$APP"
+
+      - name: Create DMG
+        run: |
+          STAGE="$RUNNER_TEMP/dmg"
+          mkdir -p "$STAGE"
+          cp -R build/macos/Build/Products/Release/PadPilot.app "$STAGE/"
+          ln -s /Applications "$STAGE/Applications"
+          hdiutil create -volname PadPilot -srcfolder "$STAGE" -ov -format UDZO "$DMG"
+
+      - name: Notarize DMG
+        if: env.HAS_SIGNING == 'true' && env.HAS_NOTARY == 'true'
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+          IDENTITY: ${{ secrets.MACOS_SIGNING_IDENTITY }}
+        run: |
+          codesign --force --timestamp --sign "$IDENTITY" "$DMG"
+          xcrun notarytool submit "$DMG" --wait \
+            --apple-id "$APPLE_ID" --team-id "$APPLE_TEAM_ID" --password "$APPLE_APP_PASSWORD"
+          xcrun stapler staple "$DMG"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PadPilot-macos
+          path: ${{ env.DMG }}
+          if-no-files-found: error
+
+  windows:
+    runs-on: windows-latest
+    env:
+      ZIP: PadPilot-${{ inputs.version }}-windows-x64.zip
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - name: Build
+        run: |
+          flutter pub get
+          flutter build windows --release --build-name "${{ inputs.version }}" --build-number "${{ github.run_number }}"
+
+      - name: Package
+        shell: pwsh
+        run: Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath $env:ZIP
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PadPilot-windows
+          path: ${{ env.ZIP }}
+          if-no-files-found: error
