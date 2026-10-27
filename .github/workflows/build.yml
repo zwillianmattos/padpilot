@@ -70,6 +70,15 @@ jobs:
             --sign "$IDENTITY" "$APP"
           codesign --verify --deep --strict --verbose=2 "$APP"
 
+      # Hardened runtime with an ad-hoc signature makes dyld reject the plugin
+      # frameworks (no shared Team ID), so unsigned builds skip it.
+      - name: Sign app (ad-hoc)
+        if: env.HAS_SIGNING != 'true'
+        run: |
+          APP="build/macos/Build/Products/Release/PadPilot.app"
+          codesign --force --deep --sign - "$APP"
+          codesign --verify --deep --strict --verbose=2 "$APP"
+
       - name: Create DMG
         run: |
           STAGE="$RUNNER_TEMP/dmg"
