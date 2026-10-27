@@ -1,0 +1,456 @@
+{
+  "@@locale": "en",
+  "greetingMorning": "Good morning",
+  "greetingAfternoon": "Good afternoon",
+  "greetingEvening": "Good evening",
+  "howToConnect": "How to connect",
+  "profiles": "Profiles",
+  "settings": "Settings",
+  "permissionsPending": "Permissions pending",
+  "back": "Back",
+  "gotIt": "Got it",
+  "cancel": "Cancel",
+  "save": "Save",
+  "delete": "Delete",
+  "name": "Name",
+  "connectTitle": "Connect a controller",
+  "tipUsbTitle": "USB",
+  "tipUsb": "Plug in the cable. The controller shows up here in a few seconds.",
+  "tipBluetoothTitle": "Bluetooth",
+  "tipBluetooth": "Put the controller in pairing mode and connect it in System Settings › Bluetooth.",
+  "tipXbox360Title": "Wireless Xbox 360",
+  "tipXbox360": "Doesn't use Bluetooth: it needs Microsoft's wireless receiver.",
+  "tipPs3Title": "PS3 over USB",
+  "tipPs3": "You may need to press the PS button once.",
+  "tipHidTitle": "Generic controllers",
+  "tipHid": "Require the Input Monitoring permission to be detected.",
+  "connected": "Connected",
+  "genericHid": "Generic HID",
+  "controllerFallback": "Controller",
+  "noController": "No controller connected",
+  "noControllerHint": "Connect via USB or Bluetooth. It will show up here automatically.",
+  "editAnyway": "Edit profile anyway",
+  "switchActiveProfile": "Switch profile in use",
+  "profileInUse": "Profile in use:",
+  "mappingEnable": "Turn mapping on",
+  "mappingDisable": "Turn mapping off",
+  "mappingActive": "Mapping on",
+  "mappingPaused": "Mapping paused",
+  "profileEditor": "Profile editor",
+  "detectButton": "Detect button",
+  "waitingController": "Waiting for controller…",
+  "switchProfile": "Switch profile",
+  "profileLabel": "Profile:",
+  "manageProfiles": "Manage profiles…",
+  "inUse": "In use",
+  "useThisProfile": "Use this profile",
+  "statusCapturing": "Press a button or trigger, or move a stick on the controller",
+  "statusOffline": "No controller connected — you can still edit the profile",
+  "statusConnected": "Click a point on the controller to assign an action",
+  "statusDisconnected": "Controller disconnected",
+  "assignments": "Assignments",
+  "actionsCount": "{count, plural, =0{No actions} =1{1 action} other{{count} actions}}",
+  "@actionsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "actionsInProfile": "{count, plural, =0{No actions in this profile} =1{1 action in this profile} other{{count} actions in this profile}}",
+  "@actionsInProfile": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "allControls": "All controls",
+  "bothFireWarning": "The whole stick and its directions are both assigned; both will fire.",
+  "notAssigned": "Not assigned",
+  "leftStick": "Left stick",
+  "rightStick": "Right stick",
+  "dpad": "D-pad",
+  "triangle": "Triangle",
+  "square": "Square",
+  "circle": "Circle",
+  "cross": "Cross",
+  "wholeStick": "Whole stick",
+  "dirUp": "Up",
+  "dirDown": "Down",
+  "dirLeft": "Left",
+  "dirRight": "Right",
+  "press": "Press",
+  "pressNamed": "Press ({name})",
+  "@pressNamed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "kindNone": "None",
+  "kindKey": "Key",
+  "kindClick": "Click",
+  "kindMove": "Move mouse",
+  "kindScroll": "Scroll",
+  "mouseLeft": "Left",
+  "mouseMiddle": "Middle",
+  "mouseRight": "Right",
+  "clickHint": "Hold to drag. Two quick presses make a double-click.",
+  "responseCurve": "Response curve",
+  "curveLinear": "Linear",
+  "curveQuadratic": "Quadratic",
+  "curveExponential": "Exponential",
+  "deadzone": "Dead zone",
+  "speed": "Speed",
+  "speedAll": "All",
+  "sameSpeedAllDirections": "Same in every direction",
+  "vertical": "Vertical",
+  "horizontal": "Horizontal",
+  "invertDirection": "Invert direction",
+  "linesPerStep": "Lines per step",
+  "triggerFrom": "Fire from",
+  "actionMoveMouse": "Move mouse",
+  "actionClickLeft": "Left click",
+  "actionClickRight": "Right click",
+  "actionClickMiddle": "Middle click",
+  "actionScrollUp": "Scroll up",
+  "actionScrollDown": "Scroll down",
+  "actionScrollLeft": "Scroll left",
+  "actionScrollRight": "Scroll right",
+  "keyFallback": "Key {code}",
+  "@keyFallback": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "keySpace": "Space",
+  "keyRight": "Right {name}",
+  "@keyRight": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "pressAKey": "Press a key…",
+  "clickToRecord": "Click to record",
+  "record": "Record",
+  "newProfile": "New profile",
+  "import": "Import",
+  "restoreSamples": "Restore sample profiles",
+  "defaultProfileName": "My profile",
+  "imported": "“{name}” imported",
+  "@imported": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "invalidProfileFile": "This file isn't a valid profile",
+  "samplesRestored": "Sample profiles restored",
+  "errorLoadingProfiles": "Couldn't load profiles: {error}",
+  "@errorLoadingProfiles": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "profileExported": "Profile exported",
+  "deleteProfileTitle": "Delete “{name}”?",
+  "@deleteProfileTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "cannotBeUndone": "This can't be undone.",
+  "renameProfile": "Rename profile",
+  "moreActions": "More actions",
+  "rename": "Rename",
+  "duplicate": "Duplicate",
+  "exportMenu": "Export…",
+  "copyName": "{name} (copy)",
+  "@copyName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profileFileType": "PadPilot profile",
+  "welcome": "Welcome to PadPilot",
+  "permissions": "Permissions",
+  "tagline": "Use your controller to drive any app or game on your Mac.",
+  "accessibility": "Accessibility",
+  "accessibilityDesc": "Lets PadPilot simulate keyboard, mouse, clicks and scrolling.",
+  "inputMonitoring": "Input Monitoring",
+  "inputMonitoringDesc": "Only needed for generic HID controllers. Xbox, PlayStation and Switch controllers work without it.",
+  "permissionsAutoUpdate": "After you enable it in System Settings the status updates by itself. If it doesn't, quit and reopen PadPilot.",
+  "continueLabel": "Continue",
+  "continueAnyway": "Continue anyway",
+  "required": "Required",
+  "optional": "Optional",
+  "allowed": "Allowed",
+  "openSystemSettings": "Open System Settings",
+  "general": "General",
+  "launchAtLogin": "Launch at login",
+  "launchAtLoginDesc": "PadPilot starts in the menu bar when you log in.",
+  "couldNotChange": "Couldn't change this: {error}",
+  "@couldNotChange": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "globalShortcut": "Global shortcut",
+  "globalShortcutDesc": "Turns mapping on and off from anywhere.",
+  "shortcutNeedsModifier": "Use at least one modifier (⌘, ⌥, ⌃ or ⇧).",
+  "shortcutInUse": "That shortcut is already used by another app.",
+  "removeShortcut": "Remove shortcut",
+  "permissionDenied": "Not allowed",
+  "permissionUnknown": "Not requested",
+  "managePermissions": "Manage permissions",
+  "language": "Language",
+  "languageSystem": "System default",
+  "trayMappingActive": "Mapping on",
+  "trayProfile": "Profile: {name}",
+  "@trayProfile": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "trayOpen": "Open PadPilot",
+  "trayQuit": "Quit PadPilot",
+  "sampleMediaPlayer": "Media Player",
+  "sampleNavigation": "Browsing",
+  "samplePhotoEditing": "Photo editing",
+  "diagnostics": "Controller diagnostics",
+  "diagnosticsShort": "Diagnostics",
+  "resetStats": "Reset measurements",
+  "eventsPerSecond": "{rate} events/s",
+  "@eventsPerSecond": {
+    "placeholders": {
+      "rate": {
+        "type": "int"
+      }
+    }
+  },
+  "rangeX": "X range",
+  "rangeY": "Y range",
+  "resolution": "Resolution",
+  "resolutionValue": "≈{bits} bits ({levels} steps)",
+  "@resolutionValue": {
+    "placeholders": {
+      "bits": {
+        "type": "String"
+      },
+      "levels": {
+        "type": "int"
+      }
+    }
+  },
+  "measuring": "Move the stick to measure",
+  "outerRadius": "Average edge reach",
+  "circularityError": "Roundness error",
+  "center": "Center offset",
+  "noise": "Noise at rest (σ)",
+  "suggestedDeadzone": "Suggested dead zone",
+  "calibrateCenter": "Calibrate center",
+  "calibrating": "Keep still… {seconds}s",
+  "@calibrating": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "calibrationSamples": "{count, plural, =0{No movement at rest (stable)} =1{1 sample at rest} other{{count} samples at rest}}",
+  "@calibrationSamples": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "applyDeadzone": "Apply to profile",
+  "deadzoneApplied": "Dead zone {percent}% applied to “{profile}”",
+  "@deadzoneApplied": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      },
+      "profile": {
+        "type": "String"
+      }
+    }
+  },
+  "noMouseMapping": "In the profile in use this stick doesn't move the mouse, so there's no dead zone to apply.",
+  "triggers": "Triggers",
+  "rawHid": "Raw HID",
+  "rawHidDesc": "Sensor counts straight from the HID report, before macOS GameController filtering and normalization. Requires Input Monitoring.",
+  "rawHidEmpty": "No raw HID data yet. Move a stick; if nothing shows up, grant Input Monitoring.",
+  "gcNote": "Values above come from GameController, which macOS already normalizes. Use Raw HID to inspect the real sensor signal.",
+  "waitingInput": "Move a stick or trigger to start",
+  "games": "Games",
+  "gameHub": "Game hub",
+  "rowContinue": "Continue playing",
+  "rowPinned": "Pinned",
+  "rowNeedsPadPilot": "Needs PadPilot",
+  "rowReady": "Ready to play",
+  "rowUnmapped": "No profile yet",
+  "rowNative": "Native controller support",
+  "rowOwned": "Owned, not installed",
+  "rowWindowsOnly": "Windows only",
+  "rowFeatured": "Featured on Steam",
+  "rowSearch": "Search results",
+  "badgeFull": "Full controller support",
+  "badgePartial": "Partial controller support",
+  "badgeNone": "No controller support",
+  "badgeWindowsOnly": "Windows only",
+  "badgeInstalled": "Installed",
+  "discount": "-{percent}%",
+  "@discount": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "play": "Play",
+  "details": "Details",
+  "openStore": "Store page",
+  "padpilotForGame": "PadPilot for this game",
+  "profileForGame": "Profile",
+  "useProfileInUse": "Use the profile in use",
+  "autoSwitch": "Switch automatically",
+  "autoSwitchDesc": "Uses this profile while the game is in front, then goes back to the previous one.",
+  "padpilotOffForGame": "Turn PadPilot off for this game",
+  "padpilotOffDesc": "Recommended when the game supports controllers natively, to avoid double input.",
+  "hideGame": "Hide from hub",
+  "pinGame": "Pin to the top",
+  "createProfileForGame": "New profile for this game",
+  "editProfile": "Edit profile",
+  "suggested": "Suggested: {name}",
+  "@suggested": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "useSuggestion": "Use",
+  "playtime": "Playtime",
+  "playtimeHours": "{hours} h",
+  "@playtimeHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "lastPlayed": "Last session",
+  "installSize": "Size on disk",
+  "releaseDate": "Release",
+  "genres": "Genres",
+  "developer": "Developer",
+  "platforms": "Platforms",
+  "nowPlaying": "Playing {game} · profile {profile}",
+  "@nowPlaying": {
+    "placeholders": {
+      "game": {
+        "type": "String"
+      },
+      "profile": {
+        "type": "String"
+      }
+    }
+  },
+  "nowPlayingPaused": "Playing {game} · PadPilot off",
+  "@nowPlayingPaused": {
+    "placeholders": {
+      "game": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesCount": "{count, plural, =0{No games} =1{1 game} other{{count} games}}",
+  "@gamesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "steamNotFound": "Steam isn't installed on this Mac",
+  "steamNotFoundDesc": "Install Steam to see your games here, or link your Steam account to see the games you own.",
+  "linkSteam": "Link Steam account",
+  "steamAccount": "Steam account",
+  "linkedAs": "Linked as {name}",
+  "@linkedAs": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "unlink": "Unlink",
+  "apiKey": "Web API key",
+  "steamId": "SteamID64",
+  "getApiKey": "Get a key",
+  "linkSteamDesc": "Optional: adds games you own but haven't installed, plus playtime. The key is stored in the macOS Keychain and only sent to Steam.",
+  "linkFailed": "Couldn't link: {error}",
+  "@linkFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "invalidKey": "Steam rejected this key or SteamID.",
+  "privateProfileHint": "Steam returned no games. Check that your profile's game details are public.",
+  "link": "Link",
+  "searchGames": "Search games",
+  "offlineError": "Couldn't reach Steam. Showing what's cached.",
+  "noDescription": "No description available.",
+  "loading": "Loading…",
+  "diagStep1": "Rotate each stick slowly along its edge, a few full turns.",
+  "diagStep2": "Let go, then tap “Calibrate center” and keep it still for 2 s.",
+  "diagStep3": "Apply the suggested dead zone to the profile in use.",
+  "groupSignal": "Signal",
+  "groupCircularity": "Circularity",
+  "groupCenter": "Center at rest",
+  "positionX": "X position",
+  "positionY": "Y position",
+  "coverageShort": "Edge covered",
+  "rotateMore": "Rotate more to measure",
+  "legendEnvelope": "Edge outline",
+  "legendDeadzone": "Dead zone",
+  "legendCenter": "Measured center",
+  "legendTrail": "Recent movement",
+  "verdictGood": "Good",
+  "verdictWarn": "Check",
+  "verdictBad": "Poor",
+  "notMeasured": "Not measured",
+  "triggerLeft": "Left trigger",
+  "triggerRight": "Right trigger",
+  "axis": "Axis",
+  "bits": "Bits",
+  "toggleShortcutTitle": "Turn mapping on/off",
+  "open": "Open",
+  "padpilotOffShort": "PadPilot off",
+  "notListedHint": "PadPilot not in the list? Click “+” in System Settings and pick PadPilot.app.",
+  "revealApp": "Show app in Finder",
+  "restartApp": "Restart PadPilot",
+  "restartRequiredDesc": "Input Monitoring was allowed. Restart PadPilot for it to take effect.",
+  "windowsPreview": "Windows preview: profiles and the game hub work, but controller mapping isn't available on Windows yet."
+}
