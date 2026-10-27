@@ -28,7 +28,7 @@ jobs:
       HAS_NOTARY: ${{ secrets.APPLE_APP_PASSWORD != '' }}
       DMG: PadPilot-${{ inputs.version }}-macos.dmg
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: subosito/flutter-action@v2
         with:
@@ -98,11 +98,12 @@ jobs:
           if-no-files-found: error
 
   windows:
-    runs-on: windows-latest
+    # Flutter 3.35 only detects Visual Studio 2019/2022.
+    runs-on: windows-2022
     env:
       ZIP: PadPilot-${{ inputs.version }}-windows-x64.zip
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: subosito/flutter-action@v2
         with:
